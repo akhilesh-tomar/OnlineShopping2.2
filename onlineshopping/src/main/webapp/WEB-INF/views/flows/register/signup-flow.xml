@@ -7,7 +7,7 @@
 </flow>
 	
 	<!-- is the start state - -->
-	<view-state id="personal" view="flow/register/signup-personal"></view-state>
+	<view-state id="personal" view="flows/register/signup-personal"></view-state>
 	
 	<!-- end state -->>
 		<end-state id="home" view="externalRedirect:contextRelative:/"/>
