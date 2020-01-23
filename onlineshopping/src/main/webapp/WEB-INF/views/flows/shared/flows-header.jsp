@@ -53,7 +53,9 @@
 
 	<div class="wrapper">
 
-		<%@include file="../shared/flows-navbar.jsp" %>>
+		<%@include file="../shared/flows-navbar.jsp"%>
 
 
 	</div>
+
+</body>

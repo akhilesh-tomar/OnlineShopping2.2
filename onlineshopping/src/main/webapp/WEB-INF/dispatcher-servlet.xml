@@ -1,6 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:wf="http://www.springframework.org/schema/webflow-config"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
     http://www.springframework.org/schema/beans
@@ -8,7 +9,10 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd    
     http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc.xsd    
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd   
+     http://www.springframework.org/schema/webflow-config
+    http://www.springframework.org/schema/webflow-config/spring-webflow-config.xsd        
+     
     ">
 
 	<context:component-scan base-package="net.kzn.onlineshopping"/>
@@ -36,7 +40,7 @@
 	<!--flow -executor which is the entry point of flow inside dispatcher servelet.xml file
 FlowExecutor – This is the central class of the Flow and is the facade for the actual flow. It manages creating of new flows or resuming existing flows. It is an entry into the Spring web flow system.
   -->
-	<wf:flow-executor id="flowExecutor"  />
+	<wf:flow-executor id="flowExecutor" flow-registry="flowRegistry" />
 
 
 <!-- flow-registry is used by the flow executor to locate the flow that's why we have property called base-path which tell 
@@ -54,7 +58,7 @@ where the flow file is but along with this we are also using location-pattern va
  	
 <!--FlowHandler – This is a controller helper that has the reference to the actual flow. It handles the execution of the flow, 
 its outcomes and exceptions.
-FlowHandlerAdapter – This is the HandlerAdapter for web flows. It delegates work to the mapped FlowHandler.
+FlowHandlerAdapter – This is the HandlerAdapter for web flows. It delegates work to the mapped FlowHandler.It also acts as a bridge between dispatcher servelet and flowExecutor
 -->
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
@@ -73,10 +77,5 @@ FlowHandlerAdapter – This is the HandlerAdapter for web flows. It delegates wo
  	</bean>	
  	
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/> 	
-
-</beans>
-	
-	
-	
 
 </beans>
