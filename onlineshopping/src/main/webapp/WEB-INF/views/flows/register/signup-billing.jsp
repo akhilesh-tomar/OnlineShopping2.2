@@ -10,25 +10,24 @@
 
 				<div class="panel-heading">
 
-					<h4>Sign Up - Personal</h4>
+					<h4>Sign Up - Billing</h4>
 
 				</div>
 
 				<div class="panel-body">
 					<!-- Form elements -->
-					<!-- values in model attribute show be same as in value inside the view state of view personal.jsp page in flow.xml file  -->
+					<!-- values in model attribute show be same as in value inside the view state of view billing.jsp page in flow.xml file  -->
 					<sf:form class="form-horizontal" class="form-horizontal"
-						method="POST" id="registerForm" modelAttribute="user">
+						method="POST" id="registerForm" modelAttribute="billing">
 						<!-- Values in path attribute matched to the fields in user  model . we need to pass these values to user as well so for
 that we need to specify something in flow.xml file  -->
 						<!--First Name  -->
 						<div class="form-group">
 
-							<label class="control-label col-md-4" for="name">First
-								Name</label>
+							<label class="control-label col-md-4" for="addressLineOne">Address Line One</label>
 							<div class="col-md-8">
 
-								<sf:input type="text" path="firstName" placeholder="First Name"
+								<sf:input type="text" path="addressLineOne" placeholder="Address Line One"
 									class="form-control" />
 
 
@@ -42,11 +41,10 @@ that we need to specify something in flow.xml file  -->
 
 						<div class="form-group">
 
-							<label class="control-label col-md-4" for="name">Last
-								Name</label>
+							<label class="control-label col-md-4" for="addressLineOne">Address Line Two</label>
 							<div class="col-md-8">
 
-								<sf:input type="text" path="lastName" placeholder="last Name"
+								<sf:input type="text" path="addressLineTwo" placeholder="Address Line Two"
 									class="form-control" />
 
 
@@ -60,10 +58,10 @@ that we need to specify something in flow.xml file  -->
 
 						<div class="form-group">
 
-							<label class="control-label col-md-4" for="name">Email</label>
+							<label class="control-label col-md-4" for="city">City</label>
 							<div class="col-md-8">
 
-								<sf:input type="text" path="email" placeholder="Enter EmailId"
+								<sf:input type="text" path="city" placeholder="Enter City"
 									class="form-control" />
 
 
@@ -75,12 +73,11 @@ that we need to specify something in flow.xml file  -->
 
 						<div class="form-group">
 
-							<label class="control-label col-md-4" for="name">Contact
-								Number</label>
+							<label class="control-label col-md-4" for="state">State</label>
 							<div class="col-md-8">
 
-								<sf:input type="text" path="contactNumber"
-									placeholder="XXXXXXXXXX" maxlength="10" class="form-control" />
+								<sf:input type="text" path="state"
+									 class="form-control" />
 
 
 							</div>
@@ -91,10 +88,10 @@ that we need to specify something in flow.xml file  -->
 
 						<div class="form-group">
 
-							<label class="control-label col-md-4" for="name">Email</label>
+							<label class="control-label col-md-4" for="country">Country</label>
 							<div class="col-md-8">
 
-								<sf:input type="text" path="email" placeholder="Enter EmailId"
+								<sf:input type="text" path="country" placeholder="Enter Country"
 									class="form-control" />
 
 
@@ -107,10 +104,10 @@ that we need to specify something in flow.xml file  -->
 
 						<div class="form-group">
 
-							<label class="control-label col-md-4" for="name">Password</label>
+							<label class="control-label col-md-4" for="postalCode">PostalCode</label>
 							<div class="col-md-8">
 
-								<sf:input type="password" path="password" placeholder="password"
+								<sf:input type="password" path="postalCode" placeholder="PostalCode"
 									class="form-control" />
 
 
@@ -121,35 +118,23 @@ that we need to specify something in flow.xml file  -->
 						</div>
 
 
-						<!-- radio button using bootstrap class of radio-inline  -->
-
-						<div class="form-group">
-
-							<label class="control-label col-md-4">Select role</label>
-							<div class="col-md-8">
-								<label class="radio-inline"> <sf:radiobutton path="role"
-										checked="checked" value="USER" />User
-								</label> 
-								<label class="radio-inline"> <sf:radiobutton
-										path="role" value="SUPPLIER" />Supplier
-								</label>
-
-
-							</div>
-
-
-
-						</div>
-
+				
 
 						<!-- On submit it is triggering billing eventon signup personal view state so we need to add a transition for this particular event which is billing inside view state of 
 signup-personel (see flow.xml file ) -->
 						<div class="form-group">
 
 							<div class="col-md-offset-4 col-md-8">
+							<!-- Submit button for moving to personal -->
 								<button type="submit" class="btn btn-primary"
-									name=_eventId_billing>
-									Next-billing <span class="glyphicon glyphicon-chevron-right"></span>
+									name=_eventId_personal>
+								<span class="glyphicon glyphicon-chevron-left"></span>	Previous-personal 
+								</button>
+								
+								<!-- Submit button for moving to Confirm -->
+								<button type="submit" class="btn btn-primary"
+									name=_eventId_confirm>
+								<span class="glyphicon glyphicon-chevron-right"></span>	Next-Confirm
 								</button>
 							</div>
 

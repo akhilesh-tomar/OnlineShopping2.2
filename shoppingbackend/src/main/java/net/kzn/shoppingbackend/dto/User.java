@@ -7,10 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/*
+ * If we are storing any thing inside the flow scopethat is provided by the spring webflow that particular model need 
+ * to be serialized
+ * 
+ * 
+ */
 @Entity
 @Table(name = "user_detail")
-public class User {
+public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

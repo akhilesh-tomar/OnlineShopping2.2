@@ -1,4 +1,4 @@
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <!--We need to modify the form to link it with the product model which is sending through or management controller  
 
@@ -42,6 +42,7 @@ edit the product
 							<label class="control-label col-md-4" for="name">Enter
 								Product name</label>
 							<div class="col-md-8">
+<!--value in path aatribute must be matched to the the bean class member variable  -->
 
 								<sf:input type="text" path="name" id="name"
 									placeholder="product Name" class="form-control" />

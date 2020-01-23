@@ -6,13 +6,34 @@
 
 
 
+<!-- this particular instance is going to store inside flow scope so we need to pass this in view state -->
+<var name="uesr" class="net.kzn.shoppingbackend.dto"/>
+
 	<!-- is the start state - -->
-	<view-state id="personal"
-		view="flows/register/signup-personal"></view-state>
+	<view-state id="personal" view="flows/register/signup-personal" model="user">
+	<transition on="billing" to="billing"/>
+<!-- value in "to" attibute of personal view state should be matched to value of id attribute in billing view state see below  -->
+	
+	</view-state>
+
+	<view-state id="billing" view="flows/register/signup-billing" model="billing">
+	<transition on="personal" to="personal"/>
+	<transition on="confirm" to="confirm"/>
+	
+	</view-state>
+	<view-state id="confirm" view="flows/register/signup-confirm">
+	<transition on="personal" to="personal"/>
+	<transition on="billing" to="billing"/>
+		<transition on="success" to="success"/>
+	
+	</view-state>
 
 	<!-- end state -->
 	<end-state id="home"
 		view="externalRedirect:contextRelative:/" />
+	<end-state id="success"
+		view="flows/register/signup-success"/>
+	
 
 	<!-- Global Transition - -->
 
