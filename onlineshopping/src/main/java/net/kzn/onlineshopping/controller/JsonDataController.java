@@ -12,7 +12,7 @@ import net.kzn.shoppingbackend.dao.ProductDAO;
 import net.kzn.shoppingbackend.dto.Product;
 
 /*
- * This controller is returning the data in the form of JSO 
+ * This controller is returning the data in the form of JSON 
  * so we are using the Response body annotation which internally convert using a dependeny jackson
  * which we already added in the class path of backend project java object to JSON whic is also 
  * ultimately part of front end dependency also

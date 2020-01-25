@@ -1,43 +1,42 @@
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@include file="../shared/flows-header.jsp"%>
-
-<div class="container">
-
-	<div class="row">
-		<div class="col-md-offset-2 col-md-8">
-
-			<div class="panel panel-primary">
-
-				<div class="panel-heading">
-
-					<h4>Sign Up - Personal</h4>
-
-				</div>
-
-				<div class="panel-body">
-					<!-- Form elements -->
-					<!-- values in model attribute show be same as in value inside the view state of view personal.jsp page in flow.xml file  -->
-					<sf:form class="form-horizontal" class="form-horizontal"
-						method="POST" id="registerForm" modelAttribute="user">
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>			
+	<div class="container">
+		
+		
+		<div class="row">
+			
+			<div class="col-md-6 col-md-offset-3">
+				
+				<div class="panel panel-primary">
+				
+					<div class="panel-heading">
+						<h4>Sign Up - Personal</h4>
+					</div>
+					
+					<div class="panel-body">
+										
+						<sf:form
+							method="POST"
+							modelAttribute="user"
+							class="form-horizontal"
+							id="registerForm"
+						>
+					
 						<!-- Values in path attribute matched to the fields in user  model . we need to pass these values to user as well so for
 that we need to specify something in flow.xml file  -->
 						<!--First Name  -->
+					
+					
 						<div class="form-group">
-
-							<label class="control-label col-md-4" for="name">First
-								Name</label>
-							<div class="col-md-8">
-
-								<sf:input type="text" path="firstName" placeholder="First Name"
-									class="form-control" />
-
-
+								<label class="control-label col-md-4">First Name</label>
+								<div class="col-md-8">
+									<sf:input type="text" path="firstName" class="form-control"
+										placeholder="First Name" />
+									<sf:errors path="firstName" cssClass="help-block" element="em"/> 
+								</div>
 							</div>
-
-
-
-						</div>
-
+					
+					
 						<!-- Last Name -->
 
 						<div class="form-group">
@@ -58,21 +57,7 @@ that we need to specify something in flow.xml file  -->
 
 
 
-						<div class="form-group">
-
-							<label class="control-label col-md-4" for="name">Email</label>
-							<div class="col-md-8">
-
-								<sf:input type="text" path="email" placeholder="Enter EmailId"
-									class="form-control" />
-
-
-							</div>
-
-
-
-						</div>
-
+					
 						<div class="form-group">
 
 							<label class="control-label col-md-4" for="name">Contact

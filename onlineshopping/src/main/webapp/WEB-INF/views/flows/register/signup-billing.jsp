@@ -17,8 +17,10 @@
 				<div class="panel-body">
 					<!-- Form elements -->
 					<!-- values in model attribute show be same as in value inside the view state of view billing.jsp page in flow.xml file  -->
-					<sf:form class="form-horizontal" class="form-horizontal"
-						method="POST" id="registerForm" modelAttribute="billing">
+					<sf:form class="form-horizontal"
+						method="POST"
+						 id="registerForm"
+						  modelAttribute="billing">
 						<!-- Values in path attribute matched to the fields in user  model . we need to pass these values to user as well so for
 that we need to specify something in flow.xml file  -->
 						<!--First Name  -->

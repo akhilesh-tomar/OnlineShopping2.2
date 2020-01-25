@@ -7,27 +7,47 @@
 
 
 <!-- this particular instance is going to store inside flow scope so we need to pass this in view state -->
-<var name="uesr" class="net.kzn.shoppingbackend.dto"/>
+<var name="user" class="net.kzn.shoppingbackend.dto.User"/>
+<var name="billing" class="net.kzn.shoppingbackend.dto.Address"/>
+
+<!--Returnning and adding inside the flow a registerModel instance  -->
+<on-start>
+		<evaluate expression="registerHandler.init()" result="flowScope.registerModel"/>
+	</on-start>
+
 
 	<!-- is the start state - -->
 	<view-state id="personal" view="flows/register/signup-personal" model="user">
 	<transition on="billing" to="billing"/>
 <!-- value in "to" attibute of personal view state should be matched to value of id attribute in billing view state see below  -->
-	
+<!-- Once the view is exited the user details stored inside the register model so for that we use on-exit -->	
+	<on-exit>
+<evaluate expression="registerHandler.addUser(flowScope.registerModel,user)"/>
+	</on-exit>
 	</view-state>
 
 	<view-state id="billing" view="flows/register/signup-billing" model="billing">
 	<transition on="personal" to="personal"/>
 	<transition on="confirm" to="confirm"/>
-	
+	<on-exit>
+<evaluate expression="registerHandler.addBilling(flowScope.registerModel,billing)"/>
+	</on-exit>
 	</view-state>
-	<view-state id="confirm" view="flows/register/signup-confirm">
+	
+	<!-- So below here we are passing model user data and model billing data which was filled in form to the confim -->
+	<view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel">
 	<transition on="personal" to="personal"/>
 	<transition on="billing" to="billing"/>
-		<transition on="success" to="success"/>
+		<transition on="submit" to="submit"/>
 	
 	</view-state>
 
+
+<!-- Here below we are doing some action while user click on submit state for persisting the data in database -->
+<action-state id="submit">
+<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"/>
+	<transition on="success" to="success"/>
+</action-state>
 	<!-- end state -->
 	<end-state id="home"
 		view="externalRedirect:contextRelative:/" />

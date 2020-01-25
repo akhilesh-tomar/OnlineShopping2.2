@@ -1,5 +1,7 @@
 package net.kzn.shoppingbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,12 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class Address {
+public class Address implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -26,16 +32,14 @@ public class Address {
 	@Column(name="is_billing")
 	private boolean billing;
 	
-	@ManyToOne
-	private User user;
+	@Column(name = "user_id")
+	private int userId;
 	
-	
-
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 
